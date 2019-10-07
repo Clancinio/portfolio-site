@@ -14,6 +14,12 @@
 
 /* Base Styles */
 
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
 body {
     margin: 0;
     color: var(--primary-text-color);
@@ -126,3 +132,38 @@ h2 {
     min-width: 100%;
     display: none;
 }
+
+
+/* About me */
+
+.about-me {
+    display: grid;
+    grid-template-columns: [port-start] minmax(6rem, 1fr) [name-start] minmax(6rem, 1fr) [img-end] 2fr [port-end];
+}
+
+.about-img {
+    grid-column: port-start / img-end;
+    grid-row: 1 / 2;
+}
+
+.about-title {
+    grid-column: name / port;
+    grid-row: 1 / 2;
+    align-self: end;
+    margin-bottom: 0.25rem;
+}
+
+.about-subtitle,
+.about-text {
+    grid-column: port / port;
+}
+
+.about-subtitle {
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+
+/*******************
+    MEDIA QUERIES
+********************/
