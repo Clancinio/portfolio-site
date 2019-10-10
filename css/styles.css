@@ -15,17 +15,21 @@
 /* Base Styles */
 
 .container {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     max-width: 1200px;
 }
 
 body {
+    box-sizing: border-box;
     margin: 0;
     color: var(--primary-text-color);
     font-family: 'Merriweather', serif;
     line-height: 1.5;
     background: white;
+    @media sc(min-width: 450px) {
+        font-size: 1.125rem;
+    }
 }
 
 img {
@@ -120,11 +124,6 @@ h2 {
     color: white;
 }
 
-.section-left,
-.section-right {
-    /* width: 40%; */
-}
-
 .section-left img,
 .section-right img {
     object-fit: cover;
@@ -137,25 +136,26 @@ h2 {
 /* About me */
 
 .about-me {
-    display: grid;
-    grid-template-columns: [port-start] minmax(6rem, 1fr) [name-start] minmax(6rem, 1fr) [img-end] 2fr [port-end];
+    display: flex;
+    flex-direction: column;
+    margin: 5rem 0;
+    width: 100%;
+}
+
+.col-left {
+    display: flex;
+    flex-direction: column;
 }
 
 .about-img {
-    grid-column: port-start / img-end;
-    grid-row: 1 / 2;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    margin: 0 auto 20px auto;
 }
 
 .about-title {
-    grid-column: name / port;
-    grid-row: 1 / 2;
-    align-self: end;
-    margin-bottom: 0.25rem;
-}
-
-.about-subtitle,
-.about-text {
-    grid-column: port / port;
+    margin-bottom: 0;
 }
 
 .about-subtitle {
@@ -164,6 +164,188 @@ h2 {
 }
 
 
+/* My Work */
+
+.my-work {
+    text-align: center;
+    background: rgba(211, 211, 211, 0.2);
+    padding: 5rem 0;
+}
+
+figure img {
+    margin: 0;
+    display: block;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    display: block;
+}
+
+.portfolio-item h2 {
+    font-family: 'Six Caps', sans-serif;
+    font-size: 2rem;
+}
+
+.portfolio-item figcaption {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0;
+    padding: 1.5rem;
+    background: rgba(30, 69, 31, 0.5);
+    color: white;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-item a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 3px solid white;
+    align-self: flex-start;
+}
+
+.port-title {
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: auto;
+}
+
+.featured h2 {
+    font-size: 3rem;
+}
+
+.project-desc {
+    display: none;
+}
+
+.portfolio-items {
+    display: grid;
+    grid-template-columns: repeat(2 1fr);
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-item.featured {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+}
+
+
+/* Contact */
+
+.contact-section h1 {
+    text-align: center;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+input,
+textarea {
+    display: block;
+    padding: .25rem;
+    width: 100%;
+    background: rgba(211, 211, 211, 0.2);
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-top: 1rem;
+}
+
+.button {
+    display: block;
+    width: 30%;
+    margin-top: 1rem;
+    margin-left: auto;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    font-family: 'Six Caps', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+}
+
+footer {
+    background-color: var(--dark-primary-color);
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.social-icon {
+    width: 50px;
+}
+
+
 /*******************
     MEDIA QUERIES
 ********************/
+
+@media only screen and (min-width: 700px) {
+    .section-left img,
+    .section-right img {
+        display: flex;
+    }
+    .section-left,
+    .section-right {
+        width: 20%;
+    }
+    .section-middle {
+        width: 70%;
+    }
+    .about-img {
+        width: 275px;
+        height: 275px;
+    }
+    form {}
+}
+
+@media only screen and (min-width: 950px) {
+    .section-left,
+    .section-right {
+        width: 40%;
+    }
+    .section-middle .about-img {
+        width: 275px;
+        height: 275px;
+    }
+    .about-me {
+        flex-direction: row;
+    }
+    .col-left,
+    .about-text {
+        width: 50%;
+        padding: .75rem;
+    }
+    .col-left {
+        text-align: center;
+        border-right: 1px solid black;
+    }
+    .portfolio-items {
+        display: grid;
+        grid-template-columns: repeat(2 1fr);
+        width: 85%;
+    }
+}
